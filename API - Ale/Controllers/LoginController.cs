@@ -31,7 +31,7 @@ namespace API.Controllers
         // Chamamos nosso método para validar nosso usuário da aplicação
         private async Task<Usuario> AuthenticateUser(LoginViewModel login)
         {
-            Usuario usuario = await repositorio.BuscarPorEmailSenha(login.Email, login.Senha);
+            Usuario usuario = await repositorio.BuscarPorEmailSenha(login.Nome, login.Email, login.Senha);
 
             return usuario;
         }

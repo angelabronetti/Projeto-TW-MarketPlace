@@ -18,7 +18,7 @@ namespace API.Repositorio
             return usuario;
         }
 
-        public async Task<Usuario> BuscarPorEmailSenha(string email, string senha)
+        public async Task<Usuario> BuscarPorEmailSenha(string nome, string email, string senha)
         {
                 Usuario usuarioProcurado = await context.Usuario.Include(x => x.IdPermissaoNavigation).FirstAsync(x => x.Email == email && x.Senha == senha);
 

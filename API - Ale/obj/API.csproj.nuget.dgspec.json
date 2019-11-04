@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API\\API.csproj": {}
+    "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API - Ale\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API\\API.csproj": {
+    "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API - Ale\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API - Ale\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API\\API.csproj",
+        "projectPath": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API - Ale\\API.csproj",
         "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API\\obj\\",
+        "outputPath": "C:\\Users\\fic\\Desktop\\GitHub\\---TW-Marketplace---\\API - Ale\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

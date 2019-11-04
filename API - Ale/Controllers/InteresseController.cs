@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Models;
+using API___Ale.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,11 +11,17 @@ namespace API.Controllers
     [ApiController]
     public class InteresseController : ControllerBase
     {
-        TWMarketplaceContext context = new TWMarketplaceContext();
+        InteresseRepositorio repositorio = new InteresseRepositorio();
 
+
+        /// <summary>
+        /// Faz a busca de uma lista de produtos que o usuario demonstrou interesse
+        /// </summary>
+        /// <returns>Lista de pedidos</returns>
         [HttpGet]
-        public async Task<ActionResult<List<Interesse>>> Get (){
-            var interesses = await context.Interesse.Include(x => x.IdUsuarioNavigation).Include(y => y.IdProdutoNavigation).ToListAsync();
+        public async Task<ActionResult<List<Interesse>>> MeusPedidos (){
+
+            var interesses = await repositorio.MeusPedidos();
 
             if(interesses == null){
                 return NotFound();
@@ -23,10 +30,15 @@ namespace API.Controllers
             return interesses;
         }
 
+        /// <summary>
+        /// Faz a busca por Id do produto que foi demonstrado interesse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Pedido</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Interesse>> Get(int id)
         {
-            var interesse = await context.Interesse.Include(x => x.IdUsuarioNavigation).Include(y => y.IdProdutoNavigation).FirstOrDefaultAsync(i => i.IdInteresse == id);
+            var interesse = await repositorio.MeusPedidos(id);
 
             if (interesse == null)
             {
@@ -36,64 +48,40 @@ namespace API.Controllers
             return interesse;
         }
 
+
+        /// <summary>
+        /// Demonstra interesse em algum produto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="interesse"></param>
+        /// <returns>Não retorna</returns>
         [HttpPost]
-        public async Task<ActionResult<Interesse>> Post(Interesse interesse)
+        public async Task<ActionResult<Interesse>> DemonstrarInteresse(int id, Interesse interesse)
         {
             try
             {
-                await context.AddAsync(interesse);
-                await context.SaveChangesAsync();
+                return await repositorio.DemonstrarInteresse(id, interesse);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateException)
             {
                 throw;
             }
-
-            return interesse;
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(long id, Interesse interesse)
-        {
-            if (id != interesse.IdInteresse)
-            {
-                return BadRequest();
-            }
-
-            context.Entry(interesse).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                var Interesse_valido = await context.Interesse.FindAsync(id);
-
-                if (Interesse_valido == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
+        /// <summary>
+        /// Cancela um pedido de interesse
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Interesse>> Delete(int id)
+        public async Task<ActionResult<Interesse>> ApagarInteresse(int id)
         {
-            var interesse = await context.Interesse.FindAsync(id);
+            var interesse =  await repositorio.ApagarInteresse(id);
+
             if (interesse == null)
             {
                 return NotFound();
             }
-
-            context.Interesse.Remove(interesse);
-            await context.SaveChangesAsync();
 
             return interesse;
         }
