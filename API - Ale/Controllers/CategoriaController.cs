@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Models;
 using API_HOME.repositorio;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,8 @@ namespace API.Controllers
         CategoriaRepositorio repositorio = new CategoriaRepositorio();
 
         [HttpGet]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<ActionResult<List<Categoria>>> Get ()
         { /*Puxa por qualquer categoria*/
             var categorias = await context.Categoria.ToListAsync();/*Variavel categorias recebe do banco de dados Categoria minha lista*/
@@ -26,6 +30,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{categoria_produto}")]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<ActionResult<Categoria>> Get(string categoria_produto)/*Puxa apenas pelo categoria_produto */
         {
             var categoria = repositorio.Get(categoria_produto.ToLower());/*Variavel categorias recebe do banco de dados minha categoria por categoria_produto */

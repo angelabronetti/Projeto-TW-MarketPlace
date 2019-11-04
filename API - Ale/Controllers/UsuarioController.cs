@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,8 @@ namespace API.Controllers
         TWMarketplaceContext context = new TWMarketplaceContext();
 
         [HttpGet]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm")]
         public async Task<ActionResult<List<Usuario>>> Get (){
             var usuarios = await context.Usuario.ToListAsync();
 
@@ -24,6 +28,8 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm")]
         public async Task<ActionResult<Usuario>> Get(int id)
         {
             var usuario = await context.Usuario.FindAsync(id);
@@ -36,7 +42,11 @@ namespace API.Controllers
             return usuario;
         }
 
+
+        //cadastro do usuario
         [HttpPost]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm")]
         public async Task<ActionResult<Usuario>> Post(Usuario usuario)
         {
             try
@@ -53,6 +63,8 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm")]
         public async Task<IActionResult> Put(long id, Usuario usuario)
         {
             if (id != usuario.IdUsuario)
@@ -84,6 +96,8 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm")]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
             var usuario = await context.Usuario.FindAsync(id);

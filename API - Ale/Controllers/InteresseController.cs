@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Models;
 using API___Ale.Repositorio;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +21,8 @@ namespace API.Controllers
         /// </summary>
         /// <returns>Lista de pedidos</returns>
         [HttpGet]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<ActionResult<List<Interesse>>> MeusPedidos (){
 
             var interesses = await repositorio.MeusPedidos();
@@ -36,6 +40,8 @@ namespace API.Controllers
         /// <param name="id"></param>
         /// <returns>Pedido</returns>
         [HttpGet("{id}")]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<ActionResult<Interesse>> Get(int id)
         {
             var interesse = await repositorio.MeusPedidos(id);
@@ -56,6 +62,8 @@ namespace API.Controllers
         /// <param name="interesse"></param>
         /// <returns>Não retorna</returns>
         [HttpPost]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<ActionResult<Interesse>> DemonstrarInteresse(int id, Interesse interesse)
         {
             try

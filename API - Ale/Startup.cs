@@ -61,14 +61,14 @@ namespace API
                 };  
             });
 
-            // services.AddCors(options =>
-            // {
-            //     options.AddPolicy("CorsPolicy",
-            //         builder => builder.AllowAnyOrigin()
-            //             .AllowAnyMethod()
-            //             .AllowAnyHeader()
-            //             .AllowCredentials());
-            // });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("*").WithMethods("Get, Post, Delete, Put").WithHeaders("x-custom-header"));
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //libera o acesso para estrangeiros
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +85,8 @@ namespace API
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -100,7 +102,7 @@ namespace API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
             });
 
-            // app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            
 
         }
     }

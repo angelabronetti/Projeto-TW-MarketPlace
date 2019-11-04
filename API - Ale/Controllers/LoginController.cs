@@ -7,6 +7,7 @@ using API.Models;
 using API.Repositorio;
 using API.ViewModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
@@ -47,7 +48,8 @@ namespace API.Controllers
             var claims = new[] {  
                 // new Claim(JwtRegisteredClaimNames.NameId, userInfo.Nome),  
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
-                new Claim(ClaimTypes.Role, userInfo.IdPermissaoNavigation.TipoUsuario),
+                new Claim(ClaimTypes.Role, userInfo.IdPermissaoNavigation.TipoUsuario), //define o tipo de usuario logado
+                new Claim("roles", userInfo.IdPermissaoNavigation.TipoUsuario),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -70,6 +72,8 @@ namespace API.Controllers
          // Usamos essa anotação para ignorar a autenticação neste método, já que é ele quem fará isso  
         [AllowAnonymous]
         [HttpPost]
+        [EnableCors("CorsPolicy")]
+        [Authorize(Roles="adm, comum")]
         public async Task<IActionResult> Login([FromBody]LoginViewModel login)
         {
             IActionResult response = Unauthorized();
