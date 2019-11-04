@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="M:API.Controllers.LoginController.Login(API.ViewModel.LoginViewModel)">
+            <summary>
+            Autentitacação do login de usuario adm e comum. / Valida se um usuário existe no sistema
+            </summary>
+            <param name="login">Objeto do tipo usuario</param>
+            <returns>acesso ao site</returns>
+            
+        </member>
+    </members>
+</doc>
