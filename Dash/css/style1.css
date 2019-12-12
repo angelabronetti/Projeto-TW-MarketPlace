@@ -1,0 +1,271 @@
+ body{
+    padding: 0;
+    margin:0;
+    widows: 100%;
+}
+
+main{
+    width: auto;
+}
+
+/* ------ Edição da barra de notificações ------- */
+.menu_acessibilidade{
+    background: #1d2671;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: justify;
+    height: 45px;
+}
+
+.menu_acessibilidade ul li{
+    display: inline; 
+}
+
+
+.barra_conteudo{
+   text-decoration: none; 
+    text-align: right;
+    font-size: uppercase;
+}
+
+.barra_conteudo a{
+    text-decoration: none;
+}
+
+.barra_conteudo a:hover{
+    color: #5ce1e6;
+}
+
+.barra_conteudo li{
+    list-style-type: none;
+}
+
+.barra_conteudo li a{
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+
+/* ------- Fim da edição da barra de acessibilidadde -------- */
+
+/* ------- Edição do Menu de Pesquisa ---------- */
+.menu_principal{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 10px 5px 5px #DCDCDC;
+}
+
+#logo{ /* Imagem de logo */
+    width: 12vw;
+}
+
+.barraPesquisa{ /* Div para edição da barra de pesquisa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
+
+.inputBuscar{
+    width: 35vw;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.icones{ /* Div para edição dos ícones */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#btn{
+    width: 90px;
+    height: 35px;
+    background-color: #f16984;
+    border-radius: 15px;
+    border-color:  #f16984;
+    margin-right:100px;
+}
+
+#btn a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    left:3px;
+}
+
+a{
+    text-decoration: none;
+    color:#f16984;
+    text-decoration: underline #f16984;
+    position: relative;
+    right: 20px;
+}
+/* ------ Fim da edição do Menu ----------- */
+
+/* ------- Edição da parte principal da tela: Perfil usuário ----------- */
+
+/* ------- Edição da parte Menu Lateral ----------- */
+
+.conteudoCentralDash{ /* Div principal da section (quadrado) */
+    display: flex;
+    justify-content: center;
+    padding-top: 3em;
+}
+.conteudoDash{ /* conteudo principal (quadrado e edições) */
+    position: relative;
+    left: 150px;
+    bottom: 450px;
+    background-color: white;
+    width: 70vw;
+    height: 65vh;
+    border-radius: 15px;
+    box-shadow: inset 0 0 1em white, 0 0 1em #D3D3D3;
+}
+
+h1{ /* Texto principal da section */
+    padding-left: 50px;
+    color: #f16984;
+    font-size: 30px;
+}
+
+/* ------- FIM da Edição do menu lateral ----------- */
+
+/* ------- Edição da barra de divisão do menu ----------- */
+.separador{
+    border-right:  1px solid #ccc;
+}
+/* ------- FIM Edição da barra de divisão do menu ----------- */
+
+/* ------- Edição do campo de informações ----------- */
+
+#info{
+   width: 50%;
+   float: left;
+   position: relative;
+   left: 400px;
+   bottom: 850px; 
+   
+}
+
+form{
+   display: flex;
+   justify-content: space-around;
+   flex-direction: column;
+   width: 50%;
+   color: #f16984;
+   font-weight: bold;
+}
+
+ /* ----- Espaço de alteração de foto ------ */
+ h4{
+    position: relative;
+    left: 120px;
+    bottom: 900px; 
+    color: #f16984;
+    font-weight: bold;
+    width: 200px;
+ }
+
+ /* ----- Editor do local da foto ------ */
+ .espacoFoto{
+    width: 30%;
+    height: 180px;
+    border: 1px solid #696969;
+    position: relative;
+    left: 850px;
+    bottom: 900px;
+    border-radius: 15px;
+ }
+
+.buscarFoto{
+    width: 90px;
+    position: relative;
+    left: 150px;
+    bottom: 650px;    
+}
+
+/*------ Fim do campo de edição de foto ------- */
+
+/* ------ Edição do botão atualizar ------- */
+
+#btnFinal{
+    width: 90px;
+    height: 35px;
+    background-color: #f16984;
+    border-radius: 15px;
+    border-color:  #f16984;
+    margin-right:100px;
+    position: relative;
+    bottom: 800px;
+    left: 400px;
+
+}
+
+#btnFinal a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    left: 3px;
+}
+#menuDash{
+    width: 22vw;
+    position: relative;
+}
+
+.fixoMenu{
+    background-color: #f16984;
+    text-decoration: none;
+    color: white;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.mfc{
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 1em white, 0 0 1em #D3D3D3;
+}
+
+.listar{
+    height: 30px;
+    width: 70vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 1em white, 0 0 1em #D3D3D3;
+}
+#btnFinalL{
+    width: 90px;
+    height: 35px;
+    background-color: #f16984;
+    border-radius: 15px;
+    border-color:  #f16984;
+    margin-right:100px;
+    position: relative;
+    bottom: 500px;
+    left: 1000px;
+
+}
+
+#btnFinalL a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    left: 3px;
+}
