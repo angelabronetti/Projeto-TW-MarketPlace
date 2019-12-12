@@ -5272,11 +5272,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fic\\Desktop\\C#\\Projeto\\trabalho\\trabalho.csproj",
+      "projectUniqueName": "C:\\Users\\fic\\Desktop\\Projeto\\trabalho\\trabalho.csproj",
       "projectName": "trabalho",
-      "projectPath": "C:\\Users\\fic\\Desktop\\C#\\Projeto\\trabalho\\trabalho.csproj",
+      "projectPath": "C:\\Users\\fic\\Desktop\\Projeto\\trabalho\\trabalho.csproj",
       "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fic\\Desktop\\C#\\Projeto\\trabalho\\obj\\",
+      "outputPath": "C:\\Users\\fic\\Desktop\\Projeto\\trabalho\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

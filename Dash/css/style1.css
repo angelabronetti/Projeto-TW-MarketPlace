@@ -148,8 +148,13 @@ h1{ /* Texto principal da section */
    width: 50%;
    float: left;
    position: relative;
+<<<<<<< HEAD
    left: 400px;
    bottom: 850px; 
+=======
+   left: 350px;
+   bottom: 950px; 
+>>>>>>> 02866937e7721279e5e76fcdfc9c10f27396b54e
    
 }
 
@@ -166,7 +171,11 @@ form{
  h4{
     position: relative;
     left: 120px;
+<<<<<<< HEAD
     bottom: 900px; 
+=======
+    bottom: 950px; 
+>>>>>>> 02866937e7721279e5e76fcdfc9c10f27396b54e
     color: #f16984;
     font-weight: bold;
     width: 200px;
@@ -178,7 +187,11 @@ form{
     height: 180px;
     border: 1px solid #696969;
     position: relative;
+<<<<<<< HEAD
     left: 850px;
+=======
+    left: 750px;
+>>>>>>> 02866937e7721279e5e76fcdfc9c10f27396b54e
     bottom: 900px;
     border-radius: 15px;
  }
