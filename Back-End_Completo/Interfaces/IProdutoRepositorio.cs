@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Models;
+using Back_End_Completo.Models;
 
 namespace API.Interfaces
 {
     public interface IProdutoRepositorio
     {
-        Task<List<Produtos>> Get();
-        Task<Produtos> Get(int id);
-        Task<List<Produtos>> Get(string nome);
-        Task<List<Produtos>> BuscaPorCategoria(string nome);
-        Task<Produtos> Post(Produtos produtos);
-        Task<Produtos> Put(Produtos produtos);
-        Task<Produtos> Delete(Produtos produtosDel);
+        Task<List<Produto>> Get();
+        Task<Produto> Get(int id);
+        Task<List<Produto>> Get(string nome);
+        Task<List<Produto>> BuscaPorCategoria(string nome);
+        Task<Produto> Post(Produto produtos);
+        Task<Produto> Put(Produto produtos);
+        Task<Produto> Delete(Produto produtosDel);
     }
 }

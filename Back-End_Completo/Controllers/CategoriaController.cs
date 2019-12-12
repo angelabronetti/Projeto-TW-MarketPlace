@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Models;
-using API.Repositorios;
+using API_HOME.repositorio;
+using Back_End_Completo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +14,7 @@ namespace API.Controllers
         CategoriaRepositorio repositorio = new CategoriaRepositorio();
 
         [HttpGet]
-        public async Task<ActionResult<List<Categoria>>> Get (){
+         public async Task<ActionResult<List<Categoria>>> Get (){
                 try
            {
                return await repositorio.Get();
@@ -26,15 +26,16 @@ namespace API.Controllers
            }
         }
 
-        [HttpGet("{nome}")]
-        public async Task<ActionResult<Categoria>> Get(string nome)
+        [HttpGet("{categoria_produto}")]
+        public async Task<ActionResult<Categoria>> Get(string categoria_produto)/*Puxa apenas pelo categoria_produto */
         {
-            Categoria categoriaNome = await repositorio.Get(nome.ToLower());
-            if ( categoriaNome == null)
-            {
+            var categoria = repositorio.Get(categoria_produto.ToLower());/*Variavel categorias recebe do banco de dados minha categoria por categoria_produto */
+
+            if (categoria == null)
+            {/*Se minha categorias for nulo ele da erro. Caso contrario ele retorna por categoria_produto */
                 return NotFound();
             }
-            return categoriaNome;
+            return await categoria;
         }
 
         [HttpPost]
@@ -54,7 +55,7 @@ namespace API.Controllers
         [HttpPut("{nome}")]
         public async Task<ActionResult<Categoria>> Put(string nome, Categoria categoria)
         {
-             if (nome != categoria.CategoriaProduto)
+             if (nome != categoria.TwmpCategoriaProduto)
             {
                 return BadRequest();
             }
@@ -88,4 +89,5 @@ namespace API.Controllers
             return categoriaDel;
         }
     }
-}
+
+    }

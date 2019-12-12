@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Models;
-using API.Repositorios;
+using API.Repositorio;
+using Back_End_Completo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -67,7 +67,7 @@ namespace API.Controllers
         public async Task<ActionResult<Usuario>> Put(int id, Usuario usuario)
         {
           
-                if (id != usuario.IdUsuario)
+                if (id != usuario.TwmpIdUsuario)
             {
                 return BadRequest();
             }

@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Interfaces;
-using API.Models;
+using Back_End_Completo.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Repositorios
+namespace API.Repositorio
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
+
     {
         TWMPContext context = new TWMPContext();
         public async Task<Usuario> Delete(Usuario usuarioDel)
@@ -25,6 +27,7 @@ namespace API.Repositorios
         {
             return await context.Usuario.FindAsync(id);
         }
+
         public async Task<Usuario> Get(string nome)
         {
             return await context.Usuario.FindAsync(nome);
@@ -32,8 +35,9 @@ namespace API.Repositorios
 
         public async Task<Usuario> Post(Usuario usuario)
         {
-            await context.Usuario.AddAsync(usuario);
+             await context.AddAsync(usuario);
             await context.SaveChangesAsync();
+
             return usuario;
         }
 

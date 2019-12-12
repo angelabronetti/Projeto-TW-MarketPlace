@@ -1,66 +1,36 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Models;
-using API.Repositorios;
+using Back_End_Completo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using trabalho.Repositorio;
 
-namespace API.Controllers
+
+namespace trabalho.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class ProdutoController : ControllerBase
     {
-         
-         ProdutosRepositorio repositorio = new ProdutosRepositorio();
+        ProdutoRepositorio repositorio = new ProdutoRepositorio();
+      
 
         [HttpGet]
-        public async Task<ActionResult<List<Produtos>>> Get (){
-            
-               try
-           {
+        public async Task<ActionResult<List<Produto>>> Get()
+        {
+           try{
                return await repositorio.Get();
+
+            }catch(System.Exception ex){
+               return BadRequest(new  {mensage = "Erro" + ex.Message});
            }
-           catch (System.Exception)
-           {
-               
-               throw;
-           }
-        }
-
-         // GET: api/Categoria/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Produtos>> Get(int id)
-        {
-            Produtos produtosRetornado = await repositorio.Get(id);
-            if ( produtosRetornado == null)
-            {
-                return NotFound();
-            }
-            return produtosRetornado;
-        }
-         [HttpGet("categoria/{nome}")]
-        public async Task<ActionResult<List<Produtos>>> BuscaPorCategoria(string nome)
-        {
-            List<Produtos> listaDeProdutos = await repositorio.BuscaPorCategoria(nome.ToLower()); // expressão lambida/ usado para puxar tabelas para otras tabelas
-
-            if(listaDeProdutos == null)
-            {
-                return NotFound();
-            }
-            foreach (var item in listaDeProdutos) //usado manualmente para solucionar o problema de repetição de eventos
-            {
-                item.IdCategoriaNavigation.Produtos = null;
-            }
-            return listaDeProdutos;
-
-            
         }
 
         [HttpGet("busca/{nome}")]
-        public async Task<ActionResult<List<Produtos>>> Get(string nome)
+        public async Task<ActionResult<List<Produto>>> Get(string nome)
         {
-            List<Produtos> produtosNome = await repositorio.Get(nome.ToLower());
+            List<Produto> produtosNome = await repositorio.Get(nome.ToLower());
             if ( produtosNome == null)
             {
                 return NotFound();
@@ -68,24 +38,36 @@ namespace API.Controllers
             return produtosNome;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Produtos>> Post(Produtos produto)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Produto>> Get(int id)
         {
-            try 
+            Produto produtosRetornado = await repositorio.Get(id);
+            if ( produtosRetornado == null)
             {
-                return await repositorio.Post(produto);
+                return NotFound();
             }
-            catch (System.Exception)
+            return produtosRetornado;
+        }
+         [HttpGet("categoria/{nome}")]
+        public async Task<ActionResult<List<Produto>>> BuscaPorCategoria(string nome)
+        {
+            List<Produto> listaDeProdutos = await repositorio.BuscaPorCategoria(nome.ToLower()); // expressão lambida/ usado para puxar tabelas para otras tabelas
+
+            if(listaDeProdutos == null)
             {
-                
-                throw;
+                return NotFound();
             }
+            foreach (var item in listaDeProdutos) //usado manualmente para solucionar o problema de repetição de eventos
+            {
+                item.TwmpIdCategoriaNavigation.Produto = null;
+            }
+            return listaDeProdutos;            
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Produtos>> Put(int id, Produtos produto)
+         [HttpPut("{id}")]
+        public async Task<ActionResult<Produto>> Put(int id, Produto produto)
         {
-              if (id != produto.IdProduto)
+              if (id != produto.TwmpIdProduto)
             {
                 return BadRequest();
             }
@@ -108,9 +90,9 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Produtos>> Delete(int id)
+        public async Task<ActionResult<Produto>> Delete(int id)
         {
-            Produtos produtosDel = await repositorio.Get(id);
+            Produto produtosDel = await repositorio.Get(id);
             if (produtosDel == null)
             {
                 return NotFound();
@@ -118,5 +100,6 @@ namespace API.Controllers
             await repositorio.Delete(produtosDel);
             return produtosDel;
         }
+       
     }
 }

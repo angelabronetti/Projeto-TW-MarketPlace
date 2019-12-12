@@ -1,8 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
-using API.Models;
-using API.Repositorio;
-using API.ViewModel;
+using Back_End_Completo.Models;
+using Back_End_Completo.ViewModel;
 // using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +17,7 @@ namespace API.Controllers
         public class LoginController : ControllerBase
         {
 
-            TWMarketplaceContext context = new TWMarketplaceContext();
+            TWMPContext context = new TWMPContext();
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +38,7 @@ namespace API.Controllers
 
 
         public Usuario Autenticar(LoginViewModel loginView){
-            var user = context.Usuario.FirstOrDefault(u => u.Email == loginView.Email && u.Senha == loginView.Senha);
+            var user = context.Usuario.FirstOrDefault(u => u.TwmpEmail == loginView.Email && u.TwmpSenha == loginView.Senha);
             return user;
         }
      
